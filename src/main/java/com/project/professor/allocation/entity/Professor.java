@@ -15,10 +15,10 @@ public class Professor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(name = "name", nullable = false)
 	private String name;
 
-	@Column(nullable = false, unique = true)
+	@Column(name = "cpf", nullable = false, unique = true)
 	private String cpf;
 
 	@Column(name = "department_id", nullable = false)
@@ -77,5 +77,5 @@ public class Professor {
 		return "Professor [id=" + id + ", name=" + name + ", cpf=" + cpf + ", departmentId=" + departmentId
 				+ ", department=" + department + "]";
 	}
-	
+
 }

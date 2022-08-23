@@ -12,7 +12,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
 
 import com.project.professor.allocation.entity.Department;
-import com.project.professor.allocation.repository.DepartmentRepository;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
@@ -30,16 +29,43 @@ public class DepartmentRepositoryTest {
 	}
 
 	@Test
-	public void mamut() {
-		Optional<Department> dptId = departmentRepository.findById(2l);	
+	public void findById() {
+		Optional<Department> dptId = departmentRepository.findById(2l);
 		System.out.println(dptId.orElse(null));
 	}
+
 	@Test
 	public void create() {
 		Department dpt = new Department();
-		dpt.setName("Dpt Ti");
-		departmentRepository.save(dpt);
+		dpt.setName("Departamento de Inglês");
+		System.out.println(dpt);
+
+		Department dpt2 = departmentRepository.save(dpt);
+		System.out.println(dpt);
+
+	}
+
+	@Test
+	public void crudUpdate() {
+		Department dpt = new Department();
+		dpt.setName("Departamento Financeiro");
+		dpt.setId(1l);
+		System.out.println(dpt);
+
+		Department dpt2 = departmentRepository.save(dpt);
+		System.out.println(dpt);
+
+	}
+
+	@Test
+	public void crudDeletar() {
+		departmentRepository.deleteById(3l);
+
 	}
 	
+	@Test
+	public void cruDeleteAll() {
+		departmentRepository.deleteAllInBatch();
+	}
 
 }
