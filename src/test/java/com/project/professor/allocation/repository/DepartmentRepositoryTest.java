@@ -22,50 +22,53 @@ public class DepartmentRepositoryTest {
 	@Autowired
 	DepartmentRepository departmentRepository;
 
+	//read
 	@Test
 	public void findAll() {
 		List<Department> listDpt = departmentRepository.findAll();
 		System.out.println(listDpt);
 	}
 
+	//read
 	@Test
 	public void findById() {
 		Optional<Department> dptId = departmentRepository.findById(2l);
 		System.out.println(dptId.orElse(null));
 	}
 
+	//create
 	@Test
 	public void create() {
 		Department dpt = new Department();
 		dpt.setName("Departamento de Inglês");
-		System.out.println(dpt);
-
-		Department dpt2 = departmentRepository.save(dpt);
-		System.out.println(dpt);
 
 	}
 
+	//update
 	@Test
 	public void crudUpdate() {
 		Department dpt = new Department();
 		dpt.setName("Departamento Financeiro");
 		dpt.setId(1l);
-		System.out.println(dpt);
-
-		Department dpt2 = departmentRepository.save(dpt);
-		System.out.println(dpt);
 
 	}
 
+	//delete by Id
 	@Test
 	public void crudDeletar() {
 		departmentRepository.deleteById(3l);
 
 	}
-	
+
+	//delete All
 	@Test
 	public void cruDeleteAll() {
 		departmentRepository.deleteAllInBatch();
+	}
+	
+	@Test
+	public void testFindByProfessorId() {
+		
 	}
 
 }
